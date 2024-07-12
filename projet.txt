@@ -1,0 +1,437 @@
+VARIABLES
+	orange EST_DU_TYPE LISTE
+	free EST_DU_TYPE LISTE
+	promo EST_DU_TYPE LISTE
+	expresso EST_DU_TYPE LISTE
+	nbre_numero EST_DU_TYPE NOMBRE
+	numero EST_DU_TYPE CHAINE
+	i EST_DU_TYPE NOMBRE
+	cpt1 EST_DU_TYPE NOMBRE
+	cpt2 EST_DU_TYPE NOMBRE
+	longueur_num EST_DU_TYPE NOMBRE
+	initial EST_DU_TYPE CHAINE
+	chiffre EST_DU_TYPE CHAINE
+	j EST_DU_TYPE NOMBRE
+	o EST_DU_TYPE NOMBRE
+	f EST_DU_TYPE NOMBRE
+	p EST_DU_TYPE NOMBRE
+	e EST_DU_TYPE NOMBRE
+	t EST_DU_TYPE NOMBRE
+	taille EST_DU_TYPE NOMBRE
+	cpt EST_DU_TYPE NOMBRE
+	tmp EST_DU_TYPE NOMBRE
+	nv EST_DU_TYPE NOMBRE
+	y EST_DU_TYPE NOMBRE
+DEBUT_ALGORITHME
+	AFFICHER* "***BIENVENUE CHEZ GOATWIN, LE MEILLEUR OPERATEUR !***"
+	AFFICHER* "Combien de numéro voulez-vous saisir ?"
+	LIRE nbre_numero
+	TANT_QUE (nbre_numero<=0) FAIRE
+		DEBUT_TANT_QUE
+		AFFICHER* "Entrez un nombre positif !"
+		LIRE nbre_numero
+		FIN_TANT_QUE
+	o PREND_LA_VALEUR -1
+	f PREND_LA_VALEUR -1
+	p PREND_LA_VALEUR -1
+	e PREND_LA_VALEUR -1
+	i PREND_LA_VALEUR 1
+	TANT_QUE (i<=nbre_numero) FAIRE
+		DEBUT_TANT_QUE
+		AFFICHER* "Veuillez saisir un numero de téléphone "
+		LIRE numero
+		longueur_num PREND_LA_VALEUR numero.length
+		SI (longueur_num!=9) ALORS
+			DEBUT_SI
+			cpt1 PREND_LA_VALEUR 0
+			AFFICHER* "Numéro invalide !"
+			AFFICHER* "Un numéro valide comporte 9 chiffres"
+			FIN_SI
+			SINON
+				DEBUT_SINON
+				cpt1 PREND_LA_VALEUR 1
+				initial PREND_LA_VALEUR numero.substr(0,2)
+				SI (!(initial=="70"OU initial=="75"OU initial=="76"OU initial=="77"OU initial=="78")) ALORS
+					DEBUT_SI
+					cpt2 PREND_LA_VALEUR 0
+					AFFICHER* "Ce numéro ne correspond à aucun opérateur."
+					FIN_SI
+					SINON
+						DEBUT_SINON
+						j PREND_LA_VALEUR 2
+						TANT_QUE (j<9) FAIRE
+							DEBUT_TANT_QUE
+							chiffre PREND_LA_VALEUR numero.substr(j,1)
+							SI (chiffre>="0"ET chiffre<="9") ALORS
+								DEBUT_SI
+								cpt2 PREND_LA_VALEUR 1
+								FIN_SI
+								SINON
+									DEBUT_SINON
+									cpt2 PREND_LA_VALEUR 0
+									FIN_SINON
+							j PREND_LA_VALEUR j+1
+							FIN_TANT_QUE
+						FIN_SINON
+				FIN_SINON
+		TANT_QUE (cpt1==0 OU cpt2==0) FAIRE
+			DEBUT_TANT_QUE
+			AFFICHER* "Veuillez entrer un numero valide :"
+			LIRE numero
+			longueur_num PREND_LA_VALEUR numero.length
+			SI (longueur_num!=9) ALORS
+				DEBUT_SI
+				cpt1 PREND_LA_VALEUR 0
+				AFFICHER* "Numéro invalide !"
+				AFFICHER* "Un numéro valide comporte 9 chiffres"
+				FIN_SI
+				SINON
+					DEBUT_SINON
+					cpt1 PREND_LA_VALEUR 1
+					initial PREND_LA_VALEUR numero.substr(0,2)
+					SI (!(initial=="70"OU initial=="75"OU initial=="76"OU initial=="77"OU initial=="78")) ALORS
+						DEBUT_SI
+						cpt2 PREND_LA_VALEUR 0
+						AFFICHER* "Ce numéro ne correspond à aucun opérateur."
+						FIN_SI
+						SINON
+							DEBUT_SINON
+							j PREND_LA_VALEUR 2
+							TANT_QUE (j<9) FAIRE
+								DEBUT_TANT_QUE
+								chiffre PREND_LA_VALEUR numero.substr(j,1)
+								SI (chiffre>="0"ET chiffre<="9") ALORS
+									DEBUT_SI
+									cpt2 PREND_LA_VALEUR 1
+									FIN_SI
+									SINON
+										DEBUT_SINON
+										cpt2 PREND_LA_VALEUR 0
+										FIN_SINON
+								j PREND_LA_VALEUR j+1
+								FIN_TANT_QUE
+							FIN_SINON
+					FIN_SINON
+			FIN_TANT_QUE
+		SI (initial=="77"OU initial=="78") ALORS
+			DEBUT_SI
+			SI (o==-1) ALORS
+				DEBUT_SI
+				o PREND_LA_VALEUR o+1
+				orange[o] PREND_LA_VALEUR numero
+				i PREND_LA_VALEUR i+1
+				FIN_SI
+				SINON
+					DEBUT_SINON
+					taille PREND_LA_VALEUR orange.length
+					t PREND_LA_VALEUR 0
+					TANT_QUE (t<taille) FAIRE
+						DEBUT_TANT_QUE
+						SI (orange[t]==numero) ALORS
+							DEBUT_SI
+							cpt PREND_LA_VALEUR 1
+							t PREND_LA_VALEUR taille
+							FIN_SI
+							SINON
+								DEBUT_SINON
+								cpt PREND_LA_VALEUR 0
+								FIN_SINON
+						t PREND_LA_VALEUR t+1
+						FIN_TANT_QUE
+					SI (cpt==0) ALORS
+						DEBUT_SI
+						o PREND_LA_VALEUR o+1
+						orange[o] PREND_LA_VALEUR numero
+						i PREND_LA_VALEUR i+1
+						FIN_SI
+						SINON
+							DEBUT_SINON
+							AFFICHER* "Vous avez déjà entré ce numéro"
+							FIN_SINON
+					FIN_SINON
+			FIN_SI
+		SI (initial=="76") ALORS
+			DEBUT_SI
+			SI (f==-1) ALORS
+				DEBUT_SI
+				f PREND_LA_VALEUR f+1
+				free[f] PREND_LA_VALEUR numero
+				i PREND_LA_VALEUR i+1
+				FIN_SI
+				SINON
+					DEBUT_SINON
+					taille PREND_LA_VALEUR free.length
+					t PREND_LA_VALEUR 0
+					TANT_QUE (t<taille) FAIRE
+						DEBUT_TANT_QUE
+						SI (free[t]==numero) ALORS
+							DEBUT_SI
+							cpt PREND_LA_VALEUR 1
+							t PREND_LA_VALEUR taille
+							FIN_SI
+							SINON
+								DEBUT_SINON
+								cpt PREND_LA_VALEUR 0
+								FIN_SINON
+						t PREND_LA_VALEUR t+1
+						FIN_TANT_QUE
+					SI (cpt==0) ALORS
+						DEBUT_SI
+						f PREND_LA_VALEUR f+1
+						free[f] PREND_LA_VALEUR numero
+						i PREND_LA_VALEUR i+1
+						FIN_SI
+						SINON
+							DEBUT_SINON
+							AFFICHER* "Vous avez déjà entré ce numéro"
+							FIN_SINON
+					FIN_SINON
+			FIN_SI
+		SI (initial=="75") ALORS
+			DEBUT_SI
+			SI (p==-1) ALORS
+				DEBUT_SI
+				p PREND_LA_VALEUR p+1
+				promo[p] PREND_LA_VALEUR numero
+				i PREND_LA_VALEUR i+1
+				FIN_SI
+				SINON
+					DEBUT_SINON
+					taille PREND_LA_VALEUR promo.length
+					t PREND_LA_VALEUR 0
+					TANT_QUE (t<taille) FAIRE
+						DEBUT_TANT_QUE
+						SI (promo[t]==numero) ALORS
+							DEBUT_SI
+							cpt PREND_LA_VALEUR 1
+							t PREND_LA_VALEUR taille
+							FIN_SI
+							SINON
+								DEBUT_SINON
+								cpt PREND_LA_VALEUR 0
+								FIN_SINON
+						t PREND_LA_VALEUR t+1
+						FIN_TANT_QUE
+					SI (cpt==0) ALORS
+						DEBUT_SI
+						p PREND_LA_VALEUR p+1
+						promo[p] PREND_LA_VALEUR numero
+						i PREND_LA_VALEUR i+1
+						FIN_SI
+						SINON
+							DEBUT_SINON
+							AFFICHER* "Vous avez déjà entré ce numéro"
+							FIN_SINON
+					FIN_SINON
+			FIN_SI
+		SI (initial=="70") ALORS
+			DEBUT_SI
+			SI (e==-1) ALORS
+				DEBUT_SI
+				e PREND_LA_VALEUR e+1
+				expresso[e] PREND_LA_VALEUR numero
+				i PREND_LA_VALEUR i+1
+				FIN_SI
+				SINON
+					DEBUT_SINON
+					taille PREND_LA_VALEUR expresso.length
+					t PREND_LA_VALEUR 0
+					TANT_QUE (t<taille) FAIRE
+						DEBUT_TANT_QUE
+						SI (expresso[t]==numero) ALORS
+							DEBUT_SI
+							cpt PREND_LA_VALEUR 1
+							t PREND_LA_VALEUR taille
+							FIN_SI
+							SINON
+								DEBUT_SINON
+								cpt PREND_LA_VALEUR 0
+								FIN_SINON
+						t PREND_LA_VALEUR t+1
+						FIN_TANT_QUE
+					SI (cpt==0) ALORS
+						DEBUT_SI
+						e PREND_LA_VALEUR e+1
+						expresso[e] PREND_LA_VALEUR numero
+						i PREND_LA_VALEUR i+1
+						FIN_SI
+						SINON
+							DEBUT_SINON
+							AFFICHER* "Vous avez déjà entré ce numéro"
+							FIN_SINON
+					FIN_SINON
+			FIN_SI
+		FIN_TANT_QUE
+	AFFICHER* "Vous avez fini la saisie des numéros."
+	AFFICHER* "Pour vérifier un numéro, Entrez 1 :"
+	AFFICHER* "Pour terminer, Entrez 0 :"
+	LIRE tmp
+	TANT_QUE (tmp!=0 ET tmp!=1) FAIRE
+		DEBUT_TANT_QUE
+		AFFICHER* "Pour vérifier un numéro, Entrez 1 :"
+		AFFICHER* "Pour terminer, Entrez 0 :"
+		LIRE tmp
+		FIN_TANT_QUE
+	SI (tmp==1) ALORS
+		DEBUT_SI
+		AFFICHER* "Combien de numéro souhaitez-vous vérifier parmi les numéros saisis ?"
+		LIRE nv
+		TANT_QUE (nv<=0) FAIRE
+			DEBUT_TANT_QUE
+			AFFICHER* "Entrez une valeur supérieure à 0 :"
+			LIRE nv
+			FIN_TANT_QUE
+		y PREND_LA_VALEUR 1
+		TANT_QUE (y<=nv) FAIRE
+			DEBUT_TANT_QUE
+			AFFICHER* "Entrez le numero à vérifier :"
+			LIRE numero
+			taille PREND_LA_VALEUR orange.length
+			t PREND_LA_VALEUR 0
+			TANT_QUE (t<taille) FAIRE
+				DEBUT_TANT_QUE
+				SI (orange[t]==numero) ALORS
+					DEBUT_SI
+					cpt PREND_LA_VALEUR 1
+					t PREND_LA_VALEUR taille
+					FIN_SI
+					SINON
+						DEBUT_SINON
+						cpt PREND_LA_VALEUR 0
+						FIN_SINON
+				t PREND_LA_VALEUR t+1
+				FIN_TANT_QUE
+			SI (cpt==1) ALORS
+				DEBUT_SI
+				AFFICHER* "Ce numéro se trouve parmi les numéros ORANGE saisis"
+				FIN_SI
+				SINON
+					DEBUT_SINON
+					taille PREND_LA_VALEUR free.length
+					t PREND_LA_VALEUR 0
+					TANT_QUE (t<taille) FAIRE
+						DEBUT_TANT_QUE
+						SI (free[t]==numero) ALORS
+							DEBUT_SI
+							cpt PREND_LA_VALEUR 1
+							t PREND_LA_VALEUR taille
+							FIN_SI
+							SINON
+								DEBUT_SINON
+								cpt PREND_LA_VALEUR 0
+								FIN_SINON
+						t PREND_LA_VALEUR t+1
+						FIN_TANT_QUE
+					SI (cpt==1) ALORS
+						DEBUT_SI
+						AFFICHER* "Ce numéro se trouve parmi les numéros FREE saisis"
+						FIN_SI
+						SINON
+							DEBUT_SINON
+							taille PREND_LA_VALEUR promo.length
+							t PREND_LA_VALEUR 0
+							TANT_QUE (t<taille) FAIRE
+								DEBUT_TANT_QUE
+								SI (promo[t]==numero) ALORS
+									DEBUT_SI
+									cpt PREND_LA_VALEUR 1
+									t PREND_LA_VALEUR taille
+									FIN_SI
+									SINON
+										DEBUT_SINON
+										cpt PREND_LA_VALEUR 0
+										FIN_SINON
+								t PREND_LA_VALEUR t+1
+								FIN_TANT_QUE
+							SI (cpt==1) ALORS
+								DEBUT_SI
+								AFFICHER* "Ce numéro se trouve parmi les numéros PROMOBILE saisis"
+								FIN_SI
+								SINON
+									DEBUT_SINON
+									taille PREND_LA_VALEUR expresso.length
+									t PREND_LA_VALEUR 0
+									TANT_QUE (t<taille) FAIRE
+										DEBUT_TANT_QUE
+										SI (expresso[t]==numero) ALORS
+											DEBUT_SI
+											cpt PREND_LA_VALEUR 1
+											t PREND_LA_VALEUR taille
+											FIN_SI
+											SINON
+												DEBUT_SINON
+												cpt PREND_LA_VALEUR 0
+												FIN_SINON
+										t PREND_LA_VALEUR t+1
+										FIN_TANT_QUE
+									SI (cpt==1) ALORS
+										DEBUT_SI
+										AFFICHER* "Ce numéro se trouve parmi les numéros EXPRESSO saisis"
+										FIN_SI
+										SINON
+											DEBUT_SINON
+											AFFICHER* "Ce numéro ne fait pas partie des numéros saisis."
+											FIN_SINON
+									FIN_SINON
+							FIN_SINON
+					FIN_SINON
+			y PREND_LA_VALEUR y+1
+			FIN_TANT_QUE
+		FIN_SI
+	SI (o==-1) ALORS
+		DEBUT_SI
+		AFFICHER* "Aucun numéro Orange n'a été saisi."
+		FIN_SI
+		SINON
+			DEBUT_SINON
+			AFFICHER* "Voici le(s) numero(s) Orange saisi(s) :"
+			i PREND_LA_VALEUR 0
+			TANT_QUE (i<=o) FAIRE
+				DEBUT_TANT_QUE
+				AFFICHER* orange[i]
+				i PREND_LA_VALEUR i+1
+				FIN_TANT_QUE
+			FIN_SINON
+	SI (f==-1) ALORS
+		DEBUT_SI
+		AFFICHER* "Aucun numéro Free n'a été saisi."
+		FIN_SI
+		SINON
+			DEBUT_SINON
+			AFFICHER* "Voici le(s) numero(s) Free saisi(s) :"
+			i PREND_LA_VALEUR 0
+			TANT_QUE (i<=f) FAIRE
+				DEBUT_TANT_QUE
+				AFFICHER* free[i]
+				i PREND_LA_VALEUR i+1
+				FIN_TANT_QUE
+			FIN_SINON
+	SI (p==-1) ALORS
+		DEBUT_SI
+		AFFICHER* "Aucun numéro ProMobile n'a été saisi."
+		FIN_SI
+		SINON
+			DEBUT_SINON
+			AFFICHER* "Voici le(s) numero(s) ProMobile saisi(s) :"
+			i PREND_LA_VALEUR 0
+			TANT_QUE (i<=p) FAIRE
+				DEBUT_TANT_QUE
+				AFFICHER* promo[i]
+				i PREND_LA_VALEUR i+1
+				FIN_TANT_QUE
+			FIN_SINON
+	SI (e==-1) ALORS
+		DEBUT_SI
+		AFFICHER* "Aucun numéro Expresso n'a été saisi."
+		FIN_SI
+		SINON
+			DEBUT_SINON
+			AFFICHER* "Voici le(s) numero(s) Expresso saisi(s) :"
+			i PREND_LA_VALEUR 0
+			TANT_QUE (i<=e) FAIRE
+				DEBUT_TANT_QUE
+				AFFICHER* expresso[i]
+				i PREND_LA_VALEUR i+1
+				FIN_TANT_QUE
+			FIN_SINON
+FIN_ALGORITHME
